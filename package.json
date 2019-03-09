@@ -1,6 +1,6 @@
 {
-  "name": "doorbot",
-  "version": "5.4.0",
+  "name": "@schmupu/doorbot",
+  "version": "5.4.1",
   "description": "Ring.com Doorbell API",
   "main": "doorbot.js",
   "scripts": {
@@ -21,7 +21,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git@github.com:davglass/doorbot.git"
+    "url": "https://github.com/schmupu/doorbot"
   },
   "keywords": [
     "ring",
@@ -30,9 +30,9 @@
   "author": "Dav Glass <davglass@gmail.com>",
   "license": "BSD-3-Clause",
   "bugs": {
-    "url": "https://github.com/davglass/doorbot/issues"
+    "url": "https://github.com/schmupu/doorbot"
   },
-  "homepage": "https://github.com/davglass/doorbot",
+  "homepage": "https://github.com/schmupu/doorbot",
   "devDependencies": {
     "eslint": "^3.12.2",
     "jenkins-mocha": "^6.0.0",

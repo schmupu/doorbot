@@ -1,15 +1,19 @@
-Ring.com Doorbell API [![Build Status](https://travis-ci.org/davglass/doorbot.svg?branch=master)](https://travis-ci.org/davglass/doorbot)
+Ring.com Doorbell API [![Build Status](https://travis-ci.org/schmupu/doorbot.svg?branch=master)](https://travis-ci.org/schmupu/doorbot)
 =====================
+This is a copy of the source code from https://github.com/davglass/doorbot . 
+I made this copy only, because the npm version is not actual.
+ 
 I built this because of this [tweet](https://twitter.com/ring/status/816752533137977344).
 
 I have nothing to do with Ring.com, they just annoyed me with that tweet, so I figured out their api..
+
 
 **doorbot 2.x has an API change**
 
 usage
 -----
 
-`npm i doorbot --save`
+`npm i @schmupu/doorbot --save`
 
 ```js
 const RingAPI = require('doorbot');
