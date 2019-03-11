@@ -100,13 +100,9 @@ class Doorbot {
             if (timeoutP) {
                 return;
             }
-            var data = null;
+            var data = '';
             res.on('data', (d) => {
-                if(data === null) {
-                    data = d;
-                } else {
-                    data = Buffer.concat([data, d]);
-                }
+                data += d;
             });
             /*istanbul ignore next*/
             res.on('error', (e) => {
@@ -115,24 +111,25 @@ class Doorbot {
             res.on('end', () => {
                 req.setTimeout(0);
                 logger('fetch-raw-data', data);
-                var body,
+                var json,
                     e = null;
                 try {
-                    body = JSON.parse(scrub(data.toString()), formatDates);
+                    data = scrub(data);
+                    json = JSON.parse(data, formatDates);
                 } catch (e) {
-                    body = data;
+                    json = data;
                 }
-                logger('fetch-body', body);
-                if (body && body.error) {
-                    e = body;
+                logger('fetch-json', json);
+                if (json.error) {
+                    e = json;
                     e.status = Number(e.status);
-                    body = {};
+                    json = {};
                 }
                 if (res.statusCode >= 400) {
                     e = new Error(`API returned Status Code ${res.statusCode}`);
                     e.code = res.statusCode;
                 }
-                callback(e, body, res);
+                callback(e, json, res);
             });
         });
         req.on('error', callback);
@@ -379,7 +376,7 @@ class Doorbot {
         validate_callback(callback);
         this.simpleRequest(`/snapshots/image/${device.id}`, 'GET', callback);
     }
-
+    
     vod(device, callback) {
         validate_device(device);
         validate_callback(callback);
